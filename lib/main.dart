@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:board/screens/my_home_page.dart';
+import 'package:board/screens/board_home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const BoardHomeScreen(title: 'Flutter Demo Home Page'),
     );
   }
 }

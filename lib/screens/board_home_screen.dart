@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 
+import 'package:board/screens/tasks/tasks_index.dart';
+import 'package:board/screens/settings/settings_index.dart';
+
 class BoardHomeScreen extends StatelessWidget {
-  const BoardHomeScreen({
+  BoardHomeScreen({
     Key? key,
   }) : super(key: key);
 
-  void onPressed() {
-    print('onpressed');
-  }
+  final List<Widget> tabs = [
+    const TasksIndexScreen(),
+    const SettingsIndexScreen()
+  ];
+
+  final tabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ホーム画面'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text('You have pushed the button this many times:'),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: onPressed,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      body: tabs[tabIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: tabIndex,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.task), label: 'タスク'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: '設定'),
+        ],
       ),
     );
   }

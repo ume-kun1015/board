@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app_settings/app_settings.dart';
 
 class SettingsIndexScreen extends StatelessWidget {
   const SettingsIndexScreen({Key? key}) : super(key: key);
@@ -13,7 +14,10 @@ class SettingsIndexScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
-            Text('OSの設定へ'),
+            ElevatedButton(
+              onPressed: AppSettings.openLocationSettings,
+              child: Text('OSの設定へ'),
+            ),
           ],
         ),
       ),

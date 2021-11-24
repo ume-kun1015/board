@@ -13,7 +13,7 @@ class SettingsIndexScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
-            Text('settings screen'),
+            Text('OSの設定へ'),
           ],
         ),
       ),

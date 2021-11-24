@@ -1,45 +1,30 @@
 import 'package:flutter/material.dart';
 
-class BoardHomeScreen extends StatefulWidget {
-  const BoardHomeScreen({Key? key, required this.title}) : super(key: key);
+class BoardHomeScreen extends StatelessWidget {
+  const BoardHomeScreen({
+    Key? key,
+  }) : super(key: key);
 
-  final String title;
-
-  @override
-  State<BoardHomeScreen> createState() => _BoardHomeScreenState();
-}
-
-class _BoardHomeScreenState extends State<BoardHomeScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void onPressed() {
+    print('onpressed');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('ホーム画面'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+          children: const <Widget>[
+            Text('You have pushed the button this many times:'),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: onPressed,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

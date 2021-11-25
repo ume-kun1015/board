@@ -13,10 +13,17 @@ class SettingsIndexScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            ElevatedButton(
-              onPressed: AppSettings.openLocationSettings,
-              child: Text('OSの設定へ'),
+          children: <Widget>[
+            SizedBox(
+              width: 120,
+              height: 40,
+              child: ElevatedButton(
+                onPressed: AppSettings.openLocationSettings,
+                child: const Text('端末の設定へ'),
+                style: ElevatedButton.styleFrom(
+                  onPrimary: Colors.black,
+                ),
+              ),
             ),
           ],
         ),

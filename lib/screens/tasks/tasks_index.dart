@@ -29,7 +29,7 @@ class TasksIndexScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('タスク画面'),
+        title: const Text('タスク'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: onPressed,

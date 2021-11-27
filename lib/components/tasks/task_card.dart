@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:board/models/task_model.dart';
+import 'package:board/state/book_route_delegate_state.dart';
 
-class TaskCard extends StatelessWidget {
+class TaskCard extends ConsumerWidget {
   const TaskCard({
     Key? key,
     required this.id,
@@ -13,7 +14,7 @@ class TaskCard extends StatelessWidget {
     required this.status,
   }) : super(key: key);
 
-  final Uuid id;
+  final String id;
   final String title;
   final String description;
   final DateTime dueDateTime;
@@ -32,7 +33,7 @@ class TaskCard extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       clipBehavior: Clip.antiAlias,
       child: Padding(
@@ -79,7 +80,7 @@ class TaskCard extends StatelessWidget {
                 ElevatedButton(
                   child: const Text('詳細へ'),
                   onPressed: () {
-                    // Perform some action
+                    ref.read(bookRouteDelegateProvider).handleBookTapped(id);
                   },
                 ),
               ],

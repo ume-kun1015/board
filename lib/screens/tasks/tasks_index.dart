@@ -28,7 +28,9 @@ class TasksIndexScreen extends ConsumerWidget {
         title: const Text('タスク画面'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          // ref.read(bookRouteDelegateProvider).handleBookTapped();
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

@@ -12,7 +12,7 @@ class TaskModel {
     required this.status,
   });
 
-  final Uuid id = const Uuid();
+  final String id = const Uuid().v4();
   final String title;
   final String description;
   final DateTime dueDateTime;

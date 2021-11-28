@@ -10,10 +10,7 @@ class BoardHomeScreen extends ConsumerWidget {
     Key? key,
   }) : super(key: key);
 
-  final List<Widget> tabs = [
-    const TasksIndexScreen(),
-    const SettingsIndexScreen()
-  ];
+  final List<Widget> tabs = [TasksIndexScreen(), const SettingsIndexScreen()];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

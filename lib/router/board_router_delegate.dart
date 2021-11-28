@@ -50,7 +50,10 @@ class BoardRouterDelegate extends RouterDelegate<BoardRoutePath>
             child: TasksCreateScreen(),
           ),
         if (_mode == 'details')
-          MaterialPage(child: TasksDetailScreen(id: _selectedTaskId!)),
+          const MaterialPage(
+            key: ValueKey('TasksDetailScreen'),
+            child: TasksDetailScreen(),
+          ),
         if (_mode == 'not-found')
           const MaterialPage(
             key: ValueKey('NotFoundScreen'),

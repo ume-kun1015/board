@@ -6,10 +6,7 @@ import 'package:board/providers/board_route_delegate_state.dart';
 class TasksDetailScreen extends ConsumerWidget {
   const TasksDetailScreen({
     Key? key,
-    required this.id,
   }) : super(key: key);
-
-  final String id;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

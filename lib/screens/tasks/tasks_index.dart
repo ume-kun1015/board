@@ -27,6 +27,25 @@ class TasksIndexScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final tabController = useTabController(
+      initialLength: taskStatusTabs.length,
+    );
+
+    tabController.addListener(() {
+      if (tabController.indexIsChanging) {
+        return;
+      }
+
+      var status = taskStatusTodo;
+      if (tabController.index == 1) {
+        status = taskStatusDoing;
+      } else if (tabController.index == 2) {
+        status = taskStatusDone;
+      }
+
+      ref.read(tasksProvider.notifier).findByStatus(status);
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('タスク'),
@@ -40,88 +59,64 @@ class TasksIndexScreen extends HookConsumerWidget {
       ),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: DefaultTabController(
-          length: taskStatusTabs.length,
-          initialIndex: 0,
-          child: Builder(
-            builder: (BuildContext context) {
-              final TabController tabController =
-                  DefaultTabController.of(context)!;
-              tabController.addListener(() {
-                if (tabController.indexIsChanging) {
-                  return;
-                }
+        child: Column(
+          children: <Widget>[
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 16.0),
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey, width: 0.5),
+                ),
+              ),
+              child: TabBar(
+                labelColor: Colors.amber,
+                unselectedLabelColor: Colors.black,
+                controller: tabController,
+                onTap: (int tapped) {
+                  var status = taskStatusTodo;
+                  if (tapped == 1) {
+                    status = taskStatusDoing;
+                  } else if (tapped == 2) {
+                    status = taskStatusDone;
+                  }
 
-                var status = taskStatusTodo;
-                if (tabController.index == 1) {
-                  status = taskStatusDoing;
-                } else if (tabController.index == 2) {
-                  status = taskStatusDone;
-                }
-
-                ref.read(tasksProvider.notifier).findByStatus(status);
-              });
-
-              return Column(
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 16.0),
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(color: Colors.grey, width: 0.5),
-                      ),
-                    ),
-                    child: TabBar(
-                      labelColor: Colors.amber,
-                      unselectedLabelColor: Colors.black,
-                      onTap: (int tapped) {
-                        var status = taskStatusTodo;
-                        if (tapped == 1) {
-                          status = taskStatusDoing;
-                        } else if (tapped == 2) {
-                          status = taskStatusDone;
-                        }
-
-                        ref.read(tasksProvider.notifier).findByStatus(status);
-                      },
-                      tabs: taskStatusTabs
-                          .map((TaskStatusTabModel taskStatusTab) {
-                        return Tab(
-                          text: taskStatusTab.title,
-                        );
-                      }).toList(),
-                    ),
+                  ref.read(tasksProvider.notifier).findByStatus(status);
+                },
+                tabs: taskStatusTabs.map((TaskStatusTabModel taskStatusTab) {
+                  return Tab(
+                    text: taskStatusTab.title,
+                  );
+                }).toList(),
+              ),
+            ),
+            HookBuilder(
+              builder: (context) {
+                final snapshot = useFuture(
+                  useMemoized(
+                    () => ref
+                        .read(tasksProvider.notifier)
+                        .findByStatus(taskStatusTodo),
+                    [
+                      tasksProvider.toString(),
+                    ],
                   ),
-                  HookBuilder(
-                    builder: (context) {
-                      final snapshot = useFuture(
-                        useMemoized(
-                          () => ref
-                              .read(tasksProvider.notifier)
-                              .findByStatus(taskStatusTodo),
-                          [
-                            tasksProvider.toString(),
+                );
+
+                return snapshot.connectionState == ConnectionState.waiting
+                    ? const CircularProgressIndicator()
+                    : Expanded(
+                        child: TabBarView(
+                          controller: tabController,
+                          children: const <Widget>[
+                            TasksTodoList(),
+                            TasksDoingList(),
+                            TasksDoneList(),
                           ],
                         ),
                       );
-
-                      return snapshot.connectionState == ConnectionState.waiting
-                          ? const CircularProgressIndicator()
-                          : const Expanded(
-                              child: TabBarView(
-                                children: <Widget>[
-                                  TasksTodoList(),
-                                  TasksDoingList(),
-                                  TasksDoneList(),
-                                ],
-                              ),
-                            );
-                    },
-                  ),
-                ],
-              );
-            },
-          ),
+              },
+            ),
+          ],
         ),
       ),
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:board/models/task_model.dart';
-import 'package:board/state/board_route_delegate_state.dart';
+import 'package:board/providers/board_route_delegate_state.dart';
 
 class TaskCard extends ConsumerWidget {
   const TaskCard({

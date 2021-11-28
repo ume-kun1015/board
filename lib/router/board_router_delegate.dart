@@ -20,8 +20,8 @@ class BoardRouterDelegate extends RouterDelegate<BoardRoutePath>
 
   @override
   BoardRoutePath get currentConfiguration {
-    if (_mode == 'not-found') {
-      return BoardRoutePath.notFound();
+    if (_mode == 'details') {
+      return BoardRoutePath.details(_selectedTaskId);
     }
 
     if (_mode == 'list') {
@@ -32,7 +32,7 @@ class BoardRouterDelegate extends RouterDelegate<BoardRoutePath>
       return BoardRoutePath.create();
     }
 
-    return BoardRoutePath.details(_selectedTaskId);
+    return BoardRoutePath.notFound();
   }
 
   @override

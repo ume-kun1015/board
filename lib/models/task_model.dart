@@ -12,6 +12,12 @@ class TaskModel {
     required this.status,
   });
 
+  TaskModel.empty()
+      : title = '',
+        description = '',
+        dueDateTime = DateTime.now(),
+        status = taskStatusTodo;
+
   final String id = const Uuid().v4();
   final String title;
   final String description;

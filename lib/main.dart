@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:board/state/board_route_delegate_state.dart';
+import 'package:board/providers/board_route_delegate_state.dart';
 import 'package:board/router/board_route_information_parser.dart';
 
 void main() {

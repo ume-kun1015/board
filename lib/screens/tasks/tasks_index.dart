@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:board/components/tasks/tasks_todo_list.dart';
 import 'package:board/components/tasks/tasks_doing_list.dart';
 import 'package:board/components/tasks/tasks_done_list.dart';
+import 'package:board/state/board_route_delegate_state.dart';
 
 class TaskStatusTabModel {
   const TaskStatusTabModel({required this.title, required this.icon});
@@ -18,21 +19,19 @@ const List<TaskStatusTabModel> taskStatusTabs = [
   TaskStatusTabModel(title: 'DONE', icon: Icons.directions_boat),
 ];
 
-class TasksIndexScreen extends StatelessWidget {
+class TasksIndexScreen extends ConsumerWidget {
   const TasksIndexScreen({Key? key}) : super(key: key);
 
-  void onPressed() {
-    print('onpressed');
-  }
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('タスク'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: onPressed,
+        onPressed: () {
+          ref.read(boardRouteDelegateProvider).setModeToCreate();
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

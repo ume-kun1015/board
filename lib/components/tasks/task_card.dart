@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:board/models/task_model.dart';
-import 'package:board/state/book_route_delegate_state.dart';
+import 'package:board/state/board_route_delegate_state.dart';
 
 class TaskCard extends ConsumerWidget {
   const TaskCard({
@@ -80,7 +80,7 @@ class TaskCard extends ConsumerWidget {
                 ElevatedButton(
                   child: const Text('詳細へ'),
                   onPressed: () {
-                    ref.read(bookRouteDelegateProvider).handleBookTapped(id);
+                    ref.read(boardRouteDelegateProvider).setModeToDetails(id);
                   },
                 ),
               ],

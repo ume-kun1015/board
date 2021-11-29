@@ -61,4 +61,19 @@ class TaskSqlite implements TaskRepository {
 
     return Future.value(list);
   }
+
+  @override
+  Future<TaskModel> create(TaskModel task) {
+    return Future.value(task);
+  }
+
+  @override
+  Future<TaskModel> update(String taskId, TaskModel task) {
+    final foundIndex = list.indexWhere((e) => e.id == taskId);
+    list[foundIndex] = task;
+
+    print(list[foundIndex]);
+
+    return Future.value(task);
+  }
 }

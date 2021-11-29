@@ -18,7 +18,17 @@ class TaskModel {
         dueDateTime = DateTime.now(),
         status = taskStatusTodo;
 
-  final String id = const Uuid().v4();
+  TaskModel.emptyWithoutId(String id)
+      : title = '',
+        description = '',
+        dueDateTime = DateTime.now(),
+        status = taskStatusTodo;
+
+  setId(String id) {
+    this.id = id;
+  }
+
+  String id = const Uuid().v4();
   final String title;
   final String description;
   final DateTime dueDateTime;

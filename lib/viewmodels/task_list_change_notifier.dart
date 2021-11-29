@@ -13,4 +13,10 @@ class TaskListChangeNotifier extends StateNotifier<List<TaskModel>> {
       state = value;
     }).catchError((dynamic error) {});
   }
+
+  Future<void> add(TaskModel task) async {
+    return repository.create(task).then((value) {
+      state = [...state, value];
+    }).catchError((dynamic error) {});
+  }
 }

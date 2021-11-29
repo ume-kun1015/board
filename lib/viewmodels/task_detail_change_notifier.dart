@@ -14,4 +14,8 @@ class TaskDetailChangeNotifier extends StateNotifier<TaskModel> {
       state = value;
     }).catchError((dynamic error) {});
   }
+
+  Future<TaskModel> createTask(TaskModel taskModel) async {
+    return repository.create(taskModel);
+  }
 }

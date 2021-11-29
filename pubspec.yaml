@@ -20,6 +20,9 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.14.0 <3.0.0"
 
+flutter_localizations:
+  sdk: flutter
+
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
@@ -37,6 +40,7 @@ dependencies:
   hooks_riverpod: 1.0.0
   app_settings: 4.1.1
   uuid: 3.0.5
+  intl: 0.17.0
 
 dev_dependencies:
   flutter_test:

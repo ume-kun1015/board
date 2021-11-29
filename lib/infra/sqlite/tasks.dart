@@ -72,8 +72,6 @@ class TaskSqlite implements TaskRepository {
     final foundIndex = list.indexWhere((e) => e.id == taskId);
     list[foundIndex] = task;
 
-    print(list[foundIndex]);
-
     return Future.value(task);
   }
 }

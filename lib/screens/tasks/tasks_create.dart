@@ -4,8 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 
 import 'package:board/models/task_model.dart';
-import 'package:board/providers/board_route_delegate_state.dart';
-import 'package:board/providers/tasks_state.dart';
+import 'package:board/providers/board_route_delegate_provider.dart';
+import 'package:board/providers/tasks_provider.dart';
 
 class TasksCreateScreen extends HookConsumerWidget {
   TasksCreateScreen({

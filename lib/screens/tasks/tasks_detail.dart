@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:board/models/task_model.dart';
 import 'package:board/providers/board_route_delegate_state.dart';
 import 'package:board/providers/task_detail_state.dart';
+import 'package:board/providers/tasks_state.dart';
 
 class TasksDetailScreen extends HookConsumerWidget {
   TasksDetailScreen({
@@ -180,9 +181,7 @@ class TasksDetailScreen extends HookConsumerWidget {
 
                       task.setId(taskId);
 
-                      ref
-                          .read(taskDetailProvider.notifier)
-                          .editTask(taskId, task);
+                      ref.read(tasksProvider.notifier).edit(taskId, task);
 
                       ref
                           .read(boardRouteDelegateProvider.notifier)

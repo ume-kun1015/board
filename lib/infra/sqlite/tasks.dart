@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:board/repositories/task_repository.dart';
 import 'package:board/models/task_model.dart';
 
@@ -28,11 +26,7 @@ final list = [
 class TaskSqlite implements TaskRepository {
   @override
   Future<TaskModel> find(String taskId) {
-    final _random = Random();
-
-    return Future.value(
-      list[_random.nextInt(list.length)],
-    );
+    return Future.value(list[0]);
   }
 
   @override

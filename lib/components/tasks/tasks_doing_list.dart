@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:board/components/tasks/task_card.dart';
-import 'package:board/providers/tasks_state.dart';
+import 'package:board/providers/tasks_provider.dart';
 import 'package:board/models/task_model.dart';
 
 class TasksDoingList extends ConsumerWidget {

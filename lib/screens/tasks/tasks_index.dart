@@ -6,8 +6,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:board/components/tasks/tasks_todo_list.dart';
 import 'package:board/components/tasks/tasks_doing_list.dart';
 import 'package:board/components/tasks/tasks_done_list.dart';
-import 'package:board/providers/board_route_delegate_state.dart';
-import 'package:board/providers/tasks_state.dart';
+import 'package:board/providers/board_route_delegate_provider.dart';
+import 'package:board/providers/tasks_provider.dart';
 
 class TaskStatusTabModel {
   const TaskStatusTabModel({required this.title, required this.icon});

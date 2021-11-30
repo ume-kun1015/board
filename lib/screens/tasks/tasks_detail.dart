@@ -193,7 +193,9 @@ class TasksDetailScreen extends HookConsumerWidget {
 
                           task.setId(taskId);
 
-                          ref.read(tasksProvider.notifier).edit(taskId, task);
+                          ref
+                              .read(tasksProvider.notifier)
+                              .edit(taskId, task.status, updatedTask);
 
                           ref
                               .read(boardRouteDelegateProvider.notifier)

@@ -20,9 +20,13 @@ class TaskListChangeNotifier extends StateNotifier<List<TaskModel>> {
     }).catchError((dynamic error) {});
   }
 
-  Future<void> edit(String taskId, TaskModel taskModel) async {
+  Future<void> edit(
+    String taskId,
+    String previousTaskStatus,
+    TaskModel taskModel,
+  ) async {
     return repository.update(taskId, taskModel).then((value) {
-      return repository.findByStatus(taskStatusDone);
+      return repository.findByStatus(previousTaskStatus);
     }).then((newList) {
       state = [...newList];
     }).catchError((dynamic error) {});

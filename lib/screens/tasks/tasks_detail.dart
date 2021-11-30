@@ -89,11 +89,12 @@ class TasksDetailScreen extends HookConsumerWidget {
                           decoration:
                               const InputDecoration(hintText: 'タイトルを入力しましょう'),
                           keyboardType: TextInputType.text,
-                          // ignore: missing_return
                           validator: (value) {
-                            if (value!.isEmpty) return 'タイトルは必須項目です';
-                            if (value.length > 12)
+                            if (value!.isEmpty) {
+                              return 'タイトルは必須項目です';
+                            } else if (value.length > 12) {
                               return 'タイトルは12文字以内で入力してください';
+                            }
                           },
                         ),
                         TextFormField(
@@ -102,7 +103,6 @@ class TasksDetailScreen extends HookConsumerWidget {
                               const InputDecoration(hintText: '説明文を入力しましょう'),
                           keyboardType: TextInputType.text,
                           maxLength: 50,
-                          // ignore: missing_return
                           validator: (value) {
                             if (value!.isEmpty) return '説明文は必須項目です';
                             if (value.length > 50) return '説明文は50文字以内で入力してください';

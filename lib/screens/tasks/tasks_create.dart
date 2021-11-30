@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
 import 'package:board/models/task_model.dart';
 import 'package:board/providers/board_route_delegate_provider.dart';
@@ -66,7 +67,6 @@ class TasksCreateScreen extends HookConsumerWidget {
                       decoration:
                           const InputDecoration(hintText: 'タイトルを入力しましょう'),
                       keyboardType: TextInputType.text,
-                      // ignore: missing_return
                       validator: (value) {
                         if (value!.isEmpty) return 'タイトルは必須項目です';
                         if (value.length > 12) return 'タイトルは12文字以内で入力してください';
@@ -78,7 +78,6 @@ class TasksCreateScreen extends HookConsumerWidget {
                           const InputDecoration(hintText: '説明文を入力しましょう'),
                       keyboardType: TextInputType.text,
                       maxLength: 50,
-                      // ignore: missing_return
                       validator: (value) {
                         if (value!.isEmpty) return '説明文は必須項目です';
                         if (value.length > 50) return '説明文は50文字以内で入力してください';
@@ -156,6 +155,7 @@ class TasksCreateScreen extends HookConsumerWidget {
 
                       ref.read(tasksProvider.notifier).add(
                             TaskModel(
+                              id: const Uuid().v4(),
                               title: titleEditingController.text,
                               description: desciptionEditingController.text,
                               dueDateTime:

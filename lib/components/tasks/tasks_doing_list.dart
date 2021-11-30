@@ -16,19 +16,26 @@ class TasksDoingList extends ConsumerWidget {
       onRefresh: () {
         return ref.read(tasksProvider.notifier).findByStatus(taskStatusDoing);
       },
-      child: ListView.builder(
-        itemCount: tasks.length,
-        padding: const EdgeInsets.only(bottom: 60.0),
-        itemBuilder: (BuildContext context, int index) {
-          return TaskCard(
-            id: tasks[index].id,
-            title: tasks[index].title,
-            description: tasks[index].description,
-            dueDateTime: tasks[index].dueDateTime,
-            status: tasks[index].status,
-          );
-        },
-      ),
+      child: tasks.isEmpty
+          ? const Center(
+              child: Text(
+                '$taskStatusDoingのタスクはありません',
+                style: TextStyle(fontSize: 16),
+              ),
+            )
+          : ListView.builder(
+              itemCount: tasks.length,
+              padding: const EdgeInsets.only(bottom: 60.0),
+              itemBuilder: (BuildContext context, int index) {
+                return TaskCard(
+                  id: tasks[index].id,
+                  title: tasks[index].title,
+                  description: tasks[index].description,
+                  dueDateTime: tasks[index].dueDateTime,
+                  status: tasks[index].status,
+                );
+              },
+            ),
     );
   }
 }

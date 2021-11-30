@@ -36,4 +36,19 @@ class TaskModel {
     this.id = id;
   }
 
+  factory TaskModel.fromMap(Map<String, dynamic> json) => TaskModel(
+        id: json["id"],
+        title: json["title"],
+        description: json["description"],
+        dueDateTime: DateTime.parse(json["dueDateTime"]).toLocal(),
+        status: json["status"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "title": title,
+        "description": description,
+        "dueDateTime": dueDateTime.toUtc().toIso8601String(),
+        "status": status
+      };
 }

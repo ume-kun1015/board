@@ -3,8 +3,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:board/providers/board_route_delegate_provider.dart';
 import 'package:board/router/board_route_information_parser.dart';
+import 'package:board/infra/sqlite/init.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SqliteClient().initDatabase();
   runApp(const ProviderScope(child: MyApp()));
 }
 

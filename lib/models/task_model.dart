@@ -6,6 +6,7 @@ const String taskStatusDone = 'DONE';
 
 class TaskModel {
   TaskModel({
+    required this.id,
     required this.title,
     required this.description,
     required this.dueDateTime,
@@ -19,7 +20,8 @@ class TaskModel {
   final String status;
 
   TaskModel.empty()
-      : title = '',
+      : id = '',
+        title = '',
         description = '',
         dueDateTime = DateTime.now(),
         status = taskStatusTodo;

@@ -181,8 +181,8 @@ class TasksDetailScreen extends HookConsumerWidget {
                             return;
                           }
 
-                          final task = TaskModel(
-                            id: const Uuid().v4(),
+                          final updatedTask = TaskModel(
+                            id: task.id,
                             title: titleEditingController.text,
                             description: desciptionEditingController.text,
                             dueDateTime: DateTime.parse(

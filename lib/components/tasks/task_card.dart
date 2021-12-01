@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import 'package:board/models/task_model.dart';
 import 'package:board/providers/board_route_delegate_provider.dart';
 
 class TaskCard extends ConsumerWidget {
-  const TaskCard({
+  TaskCard({
     Key? key,
     required this.id,
     required this.title,
@@ -19,6 +20,8 @@ class TaskCard extends ConsumerWidget {
   final String description;
   final DateTime dueDateTime;
   final String status;
+
+  final formatter = DateFormat('yyyy-MM-dd');
 
   Color? statusColor() {
     if (status == taskStatusTodo) {
@@ -51,7 +54,13 @@ class TaskCard extends ConsumerWidget {
                         title,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        "締め切り: (${formatter.format(dueDateTime)})",
+                        style: const TextStyle(
+                          fontSize: 14,
                         ),
                       ),
                     ],
@@ -67,13 +76,23 @@ class TaskCard extends ConsumerWidget {
                 ),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Text(
-                description,
-                style: TextStyle(color: Colors.black.withOpacity(0.6)),
-              ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Text(
+                    description,
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.6),
+                      fontSize: 16,
+                    ),
+                  ),
+                )
+              ],
             ),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

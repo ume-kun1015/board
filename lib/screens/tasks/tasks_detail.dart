@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:board/models/task_model.dart';
 import 'package:board/providers/board_route_delegate_provider.dart';

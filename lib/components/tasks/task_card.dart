@@ -67,12 +67,20 @@ class TaskCard extends ConsumerWidget {
                 ),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Text(
-                description,
-                style: TextStyle(color: Colors.black.withOpacity(0.6)),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Text(
+                    description,
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.6),
+                      fontSize: 16,
+                    ),
+                  ),
+                )
+              ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

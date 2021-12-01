@@ -51,7 +51,7 @@ class TaskCard extends ConsumerWidget {
                         title,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
+                          fontSize: 20,
                         ),
                       ),
                     ],

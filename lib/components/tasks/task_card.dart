@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import 'package:board/models/task_model.dart';
 import 'package:board/providers/board_route_delegate_provider.dart';
 
 class TaskCard extends ConsumerWidget {
-  const TaskCard({
+  TaskCard({
     Key? key,
     required this.id,
     required this.title,
@@ -19,6 +20,8 @@ class TaskCard extends ConsumerWidget {
   final String description;
   final DateTime dueDateTime;
   final String status;
+
+  final formatter = DateFormat('yyyy-MM-dd');
 
   Color? statusColor() {
     if (status == taskStatusTodo) {
@@ -52,6 +55,12 @@ class TaskCard extends ConsumerWidget {
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        "締め切り: (${formatter.format(dueDateTime)})",
+                        style: const TextStyle(
+                          fontSize: 16,
                         ),
                       ),
                     ],

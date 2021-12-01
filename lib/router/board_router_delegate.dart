@@ -45,13 +45,13 @@ class BoardRouterDelegate extends RouterDelegate<BoardRoutePath>
           child: BoardHomeScreen(),
         ),
         if (_mode == 'create')
-          MaterialPage(
-            key: const ValueKey('TasksCreateScreen'),
+          const MaterialPage(
+            key: ValueKey('TasksCreateScreen'),
             child: TasksCreateScreen(),
           ),
         if (_mode == 'details')
-          MaterialPage(
-            key: const ValueKey('TasksDetailScreen'),
+          const MaterialPage(
+            key: ValueKey('TasksDetailScreen'),
             child: TasksDetailScreen(),
           ),
         if (_mode == 'not-found')

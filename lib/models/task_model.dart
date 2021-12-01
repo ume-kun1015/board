@@ -32,10 +32,6 @@ class TaskModel {
         dueDateTime = DateTime.now(),
         status = taskStatusTodo;
 
-  setId(String id) {
-    this.id = id;
-  }
-
   factory TaskModel.fromMap(Map<String, dynamic> json) => TaskModel(
         id: json["id"],
         title: json["title"],

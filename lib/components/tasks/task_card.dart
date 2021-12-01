@@ -60,7 +60,7 @@ class TaskCard extends ConsumerWidget {
                       Text(
                         "締め切り: (${formatter.format(dueDateTime)})",
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                       ),
                     ],

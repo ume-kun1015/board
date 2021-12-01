@@ -76,6 +76,7 @@ class TaskCard extends ConsumerWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -91,6 +92,7 @@ class TaskCard extends ConsumerWidget {
                 )
               ],
             ),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

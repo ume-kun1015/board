@@ -14,7 +14,7 @@ class TasksDoneList extends ConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: () {
-        return ref.read(tasksProvider.notifier).findByStatus(taskStatusDone);
+        return ref.watch(tasksProvider.notifier).findByStatus(taskStatusDone);
       },
       child: tasks.isEmpty
           ? const Center(

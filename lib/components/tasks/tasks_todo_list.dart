@@ -14,7 +14,7 @@ class TasksTodoList extends ConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: () {
-        return ref.read(tasksProvider.notifier).findByStatus(taskStatusTodo);
+        return ref.watch(tasksProvider.notifier).findByStatus(taskStatusTodo);
       },
       child: tasks.isEmpty
           ? const Center(

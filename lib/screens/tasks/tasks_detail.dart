@@ -19,13 +19,13 @@ class TasksDetailScreen extends HookConsumerWidget {
     String previousTaskStatus,
     TaskModel task,
   ) {
-    ref.read(tasksProvider.notifier).edit(taskId, previousTaskStatus, task);
-    ref.read(boardRouteDelegateProvider.notifier).setModeToList();
+    ref.watch(tasksProvider.notifier).edit(taskId, previousTaskStatus, task);
+    ref.watch(boardRouteDelegateProvider.notifier).setModeToList();
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final delegate = ref.read(boardRouteDelegateProvider);
+    final delegate = ref.watch(boardRouteDelegateProvider);
 
     final taskId = delegate.selectedTaskId ?? '';
 
@@ -37,7 +37,7 @@ class TasksDetailScreen extends HookConsumerWidget {
         builder: (context) {
           useFuture(
             useMemoized(
-              () => ref.read(taskDetailProvider.notifier).findById(taskId),
+              () => ref.watch(taskDetailProvider.notifier).findById(taskId),
               [taskId],
             ),
           );
@@ -56,7 +56,7 @@ class TasksDetailScreen extends HookConsumerWidget {
             onSaveTapped: (TaskModel newTask) {
               update(ref, taskId, task.status, newTask);
 
-              ref.read(boardRouteDelegateProvider.notifier).setModeToList();
+              ref.watch(boardRouteDelegateProvider.notifier).setModeToList();
             },
           );
         },

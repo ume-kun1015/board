@@ -24,7 +24,7 @@ class BoardHomeScreen extends ConsumerWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: tappedTabIndex,
         onTap: (int index) {
-          ref.read(tabProvider.notifier).changeTab(index);
+          ref.watch(tabProvider.notifier).changeTab(index);
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.task), label: 'タスク'),

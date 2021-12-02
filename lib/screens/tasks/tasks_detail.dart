@@ -16,10 +16,9 @@ class TasksDetailScreen extends HookConsumerWidget {
   void update(
     WidgetRef ref,
     String taskId,
-    String previousTaskStatus,
     TaskModel task,
   ) {
-    ref.watch(tasksProvider.notifier).edit(taskId, previousTaskStatus, task);
+    ref.watch(tasksProvider.notifier).edit(taskId, task);
     ref.watch(boardRouteDelegateProvider.notifier).setModeToList();
   }
 
@@ -54,7 +53,7 @@ class TasksDetailScreen extends HookConsumerWidget {
             dueDateTime: task.dueDateTime,
             status: task.status,
             onSaveTapped: (TaskModel newTask) {
-              update(ref, taskId, task.status, newTask);
+              update(ref, taskId, newTask);
 
               ref.watch(boardRouteDelegateProvider.notifier).setModeToList();
             },

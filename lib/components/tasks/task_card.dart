@@ -99,7 +99,7 @@ class TaskCard extends ConsumerWidget {
                 ElevatedButton(
                   child: const Text('詳細へ'),
                   onPressed: () {
-                    ref.read(boardRouteDelegateProvider).setModeToDetails(id);
+                    ref.watch(boardRouteDelegateProvider).setModeToDetails(id);
                   },
                 ),
               ],

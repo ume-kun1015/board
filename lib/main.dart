@@ -16,7 +16,7 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.read(boardRouteDelegateProvider);
+    final provider = ref.watch(boardRouteDelegateProvider);
 
     return MaterialApp.router(
       title: 'Board App',

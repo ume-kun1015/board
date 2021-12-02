@@ -14,8 +14,8 @@ class TasksCreateScreen extends HookConsumerWidget {
   }) : super(key: key);
 
   void create(WidgetRef ref, TaskModel task) {
-    ref.read(tasksProvider.notifier).add(task);
-    ref.read(boardRouteDelegateProvider.notifier).setModeToList();
+    ref.watch(tasksProvider.notifier).add(task);
+    ref.watch(boardRouteDelegateProvider.notifier).setModeToList();
   }
 
   @override
@@ -35,7 +35,7 @@ class TasksCreateScreen extends HookConsumerWidget {
             onSaveTapped: (TaskModel newTask) {
               create(ref, newTask);
 
-              ref.read(boardRouteDelegateProvider.notifier).setModeToList();
+              ref.watch(boardRouteDelegateProvider.notifier).setModeToList();
             },
           );
         },

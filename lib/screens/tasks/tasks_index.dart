@@ -43,7 +43,7 @@ class TasksIndexScreen extends HookConsumerWidget {
         status = taskStatusDone;
       }
 
-      ref.read(tasksProvider.notifier).findByStatus(status);
+      ref.watch(tasksProvider.notifier).findByStatus(status);
     });
 
     return Scaffold(
@@ -52,7 +52,7 @@ class TasksIndexScreen extends HookConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(boardRouteDelegateProvider).setModeToCreate();
+          ref.watch(boardRouteDelegateProvider).setModeToCreate();
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
@@ -80,7 +80,7 @@ class TasksIndexScreen extends HookConsumerWidget {
                     status = taskStatusDone;
                   }
 
-                  ref.read(tasksProvider.notifier).findByStatus(status);
+                  ref.watch(tasksProvider.notifier).findByStatus(status);
                 },
                 tabs: taskStatusTabs.map((TaskStatusTabModel taskStatusTab) {
                   return Tab(
@@ -94,7 +94,7 @@ class TasksIndexScreen extends HookConsumerWidget {
                 final snapshot = useFuture(
                   useMemoized(
                     () => ref
-                        .read(tasksProvider.notifier)
+                        .watch(tasksProvider.notifier)
                         .findByStatus(taskStatusTodo),
                     [
                       tasksProvider.toString(),

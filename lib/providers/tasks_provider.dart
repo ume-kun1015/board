@@ -7,6 +7,8 @@ import 'package:board/infra/sqlite/init.dart';
 
 final tasksProvider =
     StateNotifierProvider<TaskListChangeNotifier, List<TaskModel>>(
-  (ref) =>
-      TaskListChangeNotifier(repository: TaskSqlite(client: SqliteClient())),
+  (ref) => TaskListChangeNotifier(
+    repository: TaskSqlite(client: SqliteClient()),
+    ref: ref,
+  ),
 );

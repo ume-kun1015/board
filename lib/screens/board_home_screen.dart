@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:board/screens/tasks/tasks_index.dart';
 import 'package:board/screens/settings/settings_index.dart';
-import 'package:board/providers/tab_provider.dart';
+import 'package:board/providers/bottom_tab_provider.dart';
 
 class BoardHomeScreen extends ConsumerWidget {
   BoardHomeScreen({

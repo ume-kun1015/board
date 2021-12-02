@@ -8,6 +8,7 @@ import 'package:board/components/tasks/tasks_doing_list.dart';
 import 'package:board/components/tasks/tasks_done_list.dart';
 import 'package:board/providers/board_route_delegate_provider.dart';
 import 'package:board/providers/tasks_provider.dart';
+import 'package:board/providers/task_tab_provider.dart';
 
 class TaskStatusTabModel {
   const TaskStatusTabModel({required this.title, required this.icon});
@@ -27,10 +28,12 @@ class TasksIndexScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final taskStatusTab = ref.watch(taskTabChangeProvider);
+
     final tabController = useTabController(
       initialLength: taskStatusTabs.length,
     );
-
+    tabController.animateTo(taskStatusTab);
     tabController.addListener(() {
       if (tabController.indexIsChanging) {
         return;
